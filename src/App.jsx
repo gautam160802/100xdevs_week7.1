@@ -2,15 +2,24 @@ import { useState } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
+
   return (
     <div>
-      <Count count={count} />
+      <Count count={count} setCount={setCount} />
+    </div>
+  );
+}
+
+function Count({ count, setCount }) {
+  return (
+    <div>
+      <CountRenderer count={count} />
       <Buttons count={count} setCount={setCount} />
     </div>
   );
 }
 
-function Count({ count }) {
+function CountRenderer({ count }) {
   return <div>{count}</div>;
 }
 
@@ -24,6 +33,7 @@ function Buttons({ count, setCount }) {
       >
         Increase
       </button>
+
       <button
         onClick={() => {
           setCount(count - 1);
@@ -34,4 +44,5 @@ function Buttons({ count, setCount }) {
     </div>
   );
 }
+
 export default App;
